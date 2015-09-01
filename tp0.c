@@ -16,10 +16,11 @@ void swap(int* x, int* y) {
  * Si el vector es de largo 0, devuelve -1.
  */
 int maximo(int vector[], int n) {
-	int valor_max = 0, posicion_max = 0;
+	int valor_max, posicion_max = 0;
 	if (n == 0) {
 		return -1;
 	} else {
+		valor_max = vector[0];
 		for (int i = 0; i < n; i++) {
 			if (vector[i] > valor_max) {
 				valor_max = vector[i];
@@ -64,18 +65,13 @@ int comparar(int vector1[], int n1, int vector2[], int n2) {
  * selección.
  */
 void seleccion(int vector[], int n) {
-	int posicion, intercambio;
-	for (int i = 0; i < (n - 1); i++) {
-		posicion = i;
-		for (int j = i + 1; j < n; j++) {
-			if (vector[posicion] > vector[j]) {
-				posicion = j;
+	int posicion_max;
+	if (n > 1) {
+		for (int i = n; i >= 1; i--) {
+			posicion_max = maximo(vector, i);
+			if (posicion_max != (i - 1)) {
+				swap(&vector[i - 1], &vector[posicion_max]);
 			}
 		}
-		if (posicion != i) {
-			intercambio = vector[i];
-			vector[i] = vector[posicion];
-			vector[posicion] = intercambio;
-      }
-   }
+	}
 }
