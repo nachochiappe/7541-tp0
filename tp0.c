@@ -66,12 +66,13 @@ int comparar(int vector1[], int n1, int vector2[], int n2) {
  */
 void seleccion(int vector[], int n) {
 	int posicion_max;
-	if (n > 1) {
-		for (int i = n; i >= 1; i--) {
-			posicion_max = maximo(vector, i);
-			if (posicion_max != (i - 1)) {
-				swap(&vector[i - 1], &vector[posicion_max]);
-			}
+	if (n <= 0) {
+		return;
+	}
+	for (int i = n; i >= 1; i--) {
+		posicion_max = maximo(vector, i);
+		if (posicion_max != (i - 1)) {
+			swap(&vector[i - 1], &vector[posicion_max]);
 		}
 	}
 }
